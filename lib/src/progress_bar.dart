@@ -20,6 +20,7 @@ class ProgressBar {
   DateTime start;
   String lastDraw;
   bool complete = false;
+  String message = '';
   Function callback;
 
   /**
@@ -105,6 +106,7 @@ class ProgressBar {
        .replaceAll(':total', this.total.toString())
        .replaceAll(':elapsed', elapsed.isNaN ? '0.0' : (elapsed / 1000).toStringAsFixed(1))
        .replaceAll(':eta', (eta.isNaN || !eta.isFinite) ? '0.0' : (eta / 1000).toStringAsFixed(1))
+       .replaceAll(':message', message??'')
        .replaceAll(':percent', percent.toStringAsFixed(0) + '%');
 
      /* compute the available space (non-zero) for the bar */
